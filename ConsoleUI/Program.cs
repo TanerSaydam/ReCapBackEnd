@@ -1,4 +1,5 @@
-﻿using DataAccess.Concrete.InMemory;
+﻿using Business.Concrete;
+using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -8,6 +9,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            CarManager carManager = new CarManager(new InMemoryCarDal());
             //Yeni kayıtlar oluşturuluyor
             Car car1 = new Car();
             car1.Id = 4;
@@ -23,15 +25,14 @@ namespace ConsoleUI
             car2.DailyPrice = 45000;
             car2.Description = "Peugeot";
 
-            //Yeni kayıtlar inMemory üzerinden ekleniyor
-            InMemoryCarDal inMemoryCarDal = new InMemoryCarDal();
-            inMemoryCarDal.Add(car1);            
-            inMemoryCarDal.Add(car2);
+            //Yeni kayıtlar inMemory üzerinden ekleniyor            
+            carManager.Add(car1);
+            carManager.Add(car2);
 
             Console.WriteLine("----------------------------------------");
 
             //Car listesi ekrana yazdırılıyor
-            foreach (var item in inMemoryCarDal.GetAll())
+            foreach (var item in carManager.GetAll())
             {
                 Console.WriteLine(item.Description);
             }
@@ -39,12 +40,12 @@ namespace ConsoleUI
             Console.WriteLine("----------------------------------------");
 
             //car2 kayıtı listeden siliniyor.
-            inMemoryCarDal.Delete(car2);
+            carManager.Delete(car2);
 
             Console.WriteLine("----------------------------------------");
 
             //Car listesi tekrar ekrana yazdırılıyor
-            foreach (var item in inMemoryCarDal.GetAll())
+            foreach (var item in carManager.GetAll())
             {
                 Console.WriteLine(item.Description);
             }
@@ -53,12 +54,12 @@ namespace ConsoleUI
 
             //car1'in bilgisi değiştirip sistemden update işlemi yapılıyor
             car1.Description = "New Wolksvagen";
-            inMemoryCarDal.Update(car1);
+            carManager.Update(car1);
 
             Console.WriteLine("----------------------------------------");
 
             //Car listesi tekrar ekrana yazdırılıyor
-            foreach (var item in inMemoryCarDal.GetAll())
+            foreach (var item in carManager.GetAll())
             {
                 Console.WriteLine(item.Description);
             }
@@ -66,7 +67,7 @@ namespace ConsoleUI
             Console.WriteLine("----------------------------------------");
 
             //Son olarak GetById ile 1 id'sine sahip kayıt bulunup ekrana bilgileri yazdırılıyor
-            var findCar = inMemoryCarDal.GetById(1);
+            var findCar = carManager.GetById(1);
             Console.WriteLine(findCar.Description);
 
             Console.ReadLine();
