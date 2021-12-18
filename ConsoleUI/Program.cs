@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntiyFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -8,6 +9,33 @@ namespace ConsoleUI
     class Program
     {
         static void Main(string[] args)
+        {
+            //Ders7Odev();
+
+            CarManager carManager = new CarManager(new EfCarDal());
+            
+            Car car1 = new Car();
+            car1.BrandId = 1;
+            car1.ColorId = 2;
+            car1.DailyPrice = 15000;
+            car1.Description = "";
+
+            carManager.Add(car1);
+
+            car1.Description = "S700";
+            carManager.Update(car1);
+
+            //carManager.Delete(car1);
+
+            foreach (var item in carManager.GetAll())
+            {
+                Console.WriteLine(item.Description);
+            }
+
+            Console.ReadLine();
+        }
+
+        private static void Ders7Odev()
         {
             CarManager carManager = new CarManager(new InMemoryCarDal());
             //Yeni kayıtlar oluşturuluyor
@@ -67,10 +95,8 @@ namespace ConsoleUI
             Console.WriteLine("----------------------------------------");
 
             //Son olarak GetById ile 1 id'sine sahip kayıt bulunup ekrana bilgileri yazdırılıyor
-            var findCar = carManager.GetById(1);
+            var findCar = carManager.Get(1);
             Console.WriteLine(findCar.Description);
-
-            Console.ReadLine();
         }
     }
 }
