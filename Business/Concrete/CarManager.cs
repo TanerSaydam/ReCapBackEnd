@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,78 +22,39 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            try
-            {
-                if (car.Description.Length >= 2)
-                {
-                    if (car.DailyPrice > 0)
-                    {
-                        _carDal.Add(car);
-                        Console.WriteLine(car.Description + " sisteme eklendi.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Araba günlük kiralama fiyatı 0'dan büyük olmalı.");
-                    }
-
-                }
-                else
-                {
-                    Console.WriteLine("Araba ismi 2 karakterden küçük olamaz!");
-                }
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e);
-            }
-            
-            
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
-            try
-            {
-                _carDal.Delete(car);
-                Console.WriteLine(car.Description + " sistemden silindi.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-           
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
+
         }
 
-        public IList<Car> GetAll()
+        public IDataResult<IList<Car>> GetAll()
         {
-            return _carDal.GetAll().ToList();
+            return new SuccessDataResult<IList<Car>>(_carDal.GetAll().ToList());
         }
 
-        public Car Get(int carId)
+        public IDataResult<Car> Get(int carId)
         {
-            return _carDal.Get(x=> x.Id == carId);
+            return new SuccessDataResult<Car>(_carDal.Get(x=> x.Id == carId));
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
-            try
-            {
-                _carDal.Update(car);
-                Console.WriteLine(car.Description + " güncellendi.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
+
         }
 
-        public IList<CarDetailDto> GetListCarDetail()
+        public IDataResult<IList<CarDetailDto>> GetListCarDetail()
         {
-            return _carDal.GetListCarDetail();
+            return new SuccessDataResult<IList<CarDetailDto>>(_carDal.GetListCarDetail());
         }
     }
 }
