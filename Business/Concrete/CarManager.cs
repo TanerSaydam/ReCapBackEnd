@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace Business.Concrete
            
         }
 
-        public List<Car> GetAll()
+        public IList<Car> GetAll()
         {
             return _carDal.GetAll().ToList();
         }
@@ -85,6 +86,11 @@ namespace Business.Concrete
                 Console.WriteLine(e);
             }
             
+        }
+
+        public IList<CarDetailDto> GetListCarDetail()
+        {
+            return _carDal.GetListCarDetail();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntiyFramework
+namespace DataAccess.Concrete.EntiyFramework.Context
 {
     public class RentACarContext : DbContext
     {
