@@ -20,10 +20,6 @@ namespace Business.Constants
         public static string ColorUpdated = "Renk Güncellendi.";
         public static string ColorDeleted = "Renk Silindi.";
 
-        public static string UserAdded = "Kullanıcı Eklendi.";
-        public static string UserUpdated = "Kullanıcı Güncellendi.";
-        public static string UserDeleted = "Kullanıcı Silindi.";
-
         public static string CustomerAdded = "Müşteri Eklendi.";
         public static string CustomerUpdated = "Müşteri Güncellendi.";
         public static string CustomerDeleted = "Müşteri Silindi.";
@@ -36,5 +32,16 @@ namespace Business.Constants
         public static string CarImageUpdated = "Araç Resmi Güncellendi.";
         public static string CarImageDeleted = "Araç Resmi Silindi.";
         public static string CarImageExtended = "Araç Resmi Sayısı En Fazla 5 Olabilir.";
+
+        public static string AuthorizationDenied = "İşlem yapmaya yetkiniz yok";
+
+        public static string UserRegistered = "Kullanıcı kayıtı oluşturuldu";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Şifre hatalı";
+        public static string SuccessfulLogin = "Giriş başarılı";
+        public static string UserAlreadyExists = "Bu bilgilere ait bir kullanıcı var";
+        public static string AccessTokenCreated = "Token oluşturuldu";        
     }
 }
