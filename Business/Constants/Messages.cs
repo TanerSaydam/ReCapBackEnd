@@ -31,5 +31,10 @@ namespace Business.Constants
         public static string RentalAdded = "Araç Kiralama Oluşturuldu.";
         public static string RentalUpdated = "Araç Kiralama Güncellendi.";
         public static string RentalDeleted = "Araç Kiralama Silindi.";
+
+        public static string CarImageAdded = "Araç Resmi Eklendi";
+        public static string CarImageUpdated = "Araç Resmi Güncellendi.";
+        public static string CarImageDeleted = "Araç Resmi Silindi.";
+        public static string CarImageExtended = "Araç Resmi Sayısı En Fazla 5 Olabilir.";
     }
 }
