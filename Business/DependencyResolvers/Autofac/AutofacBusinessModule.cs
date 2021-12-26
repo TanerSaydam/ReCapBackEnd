@@ -45,9 +45,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<FileHeplerManager>().As<IFileHelper>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
-            builder.RegisterType<JwTHelper>().As<ITokenHelper>().SingleInstance();
-
-            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+            builder.RegisterType<JwTHelper>().As<ITokenHelper>().SingleInstance();            
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
