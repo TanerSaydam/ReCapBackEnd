@@ -24,7 +24,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        [ValidationAspect(typeof(CarValidator),Priority =1)]
+        //[ValidationAspect(typeof(CarValidator),Priority =1)]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
