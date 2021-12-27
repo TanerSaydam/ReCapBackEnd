@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,11 +16,11 @@ namespace WepAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarImageController : ControllerBase
+    public class CarImagesController : ControllerBase
     {
         ICarImageService _carImageService;
 
-        public CarImageController(ICarImageService carImageService)
+        public CarImagesController(ICarImageService carImageService)
         {
             _carImageService = carImageService;
         }
@@ -58,9 +59,9 @@ namespace WepAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
-        {
-            var result = _carImageService.Add(file,carImage);
+        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] CarImage carImage)
+        {            
+            var result = _carImageService.AddCollective(files,carImage);
             if (result.Success)
             {
                 return Ok(result);

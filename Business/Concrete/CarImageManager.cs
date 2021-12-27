@@ -24,7 +24,7 @@ namespace Business.Concrete
         {
             _carImageDal = carImageDal;
             _fileHelper = fileHelper;
-        }
+        }        
         
         public IResult Add(IFormFile file,CarImage carImage)
         {
@@ -38,7 +38,17 @@ namespace Business.Concrete
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
-        }        
+        }
+
+        public IResult AddCollective(IFormFile[] files, CarImage carImage)
+        {
+            foreach (var file in files)
+            {
+                carImage = new CarImage { CarId = carImage.CarId };
+                Add(file, carImage);
+            }
+            return new SuccessResult();
+        }
 
         public IResult Delete(CarImage carImage)
         {
