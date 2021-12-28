@@ -12,5 +12,7 @@ namespace DataAccess.Abstract
     public interface IRentalDal : IEntityRepository<Rental>
     {
         IList<RentalDetailDto> GetListRentalDetail();
+        IList<RentalDetailDto> GetListRentalDetailByBrand(int brandId);
+        IList<RentalDetailDto> GetListRentaDetailByColor(int colorId);
     }
 }

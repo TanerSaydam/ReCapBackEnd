@@ -44,7 +44,17 @@ namespace Business.Concrete
             return new SuccessDataResult<IList<Rental>>(_rentalDal.GetAll());
         }
 
-        public IDataResult<IList<RentalDetailDto>> GetListRentalDetail()
+        public IDataResult<IList<RentalDetailDto>> GetListRentalsByBrand(int brandId)
+        {
+            return new SuccessDataResult<IList<RentalDetailDto>>(_rentalDal.GetListRentalDetailByBrand(brandId));
+        }
+
+        public IDataResult<IList<RentalDetailDto>> GetListRentalsByColor(int colorId)
+        {
+            return new SuccessDataResult<IList<RentalDetailDto>>(_rentalDal.GetListRentaDetailByColor(colorId));
+        }
+
+        public IDataResult<IList<RentalDetailDto>> GetListRentalsDetail()
         {
             return new SuccessDataResult<IList<RentalDetailDto>>(_rentalDal.GetListRentalDetail());
         }

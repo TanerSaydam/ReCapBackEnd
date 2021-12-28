@@ -34,7 +34,7 @@ namespace WepAPI.Controllers
         [HttpGet("getlistrentaldetail")]
         public IActionResult GetListRentalDetail()
         {
-            var result = _rentalService.GetListRentalDetail();
+            var result = _rentalService.GetListRentalsDetail();
             if (result.Success)
             {
                 return Ok(result);
@@ -46,6 +46,28 @@ namespace WepAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _rentalService.Get(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbybrand")]
+        public IActionResult GetByBrand(int brandId)
+        {
+            var result = _rentalService.GetListRentalsByBrand(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycolor")]
+        public IActionResult GetByColor(int colorId)
+        {
+            var result = _rentalService.GetListRentalsByColor(colorId);
             if (result.Success)
             {
                 return Ok(result);

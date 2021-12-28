@@ -12,7 +12,9 @@ namespace Business.Abstract
     public interface IRentalService
     {
         IDataResult<IList<Rental>> GetAll();
-        IDataResult<IList<RentalDetailDto>> GetListRentalDetail();
+        IDataResult<IList<RentalDetailDto>> GetListRentalsDetail();
+        IDataResult<IList<RentalDetailDto>> GetListRentalsByBrand(int brandId);
+        IDataResult<IList<RentalDetailDto>> GetListRentalsByColor(int colorId);
         IDataResult<Rental> Get(int rentalId);
         IResult Add(Rental rental);
         IResult Update(Rental rental);
