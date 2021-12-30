@@ -23,7 +23,29 @@ namespace WepAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _carService.GetListCarDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getcarlistbybrandid")]
+        public IActionResult GetCarListByBrandId(int brandId)
+        {
+            var result = _carService.GetCarListByBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getcarlistbycolorid")]
+        public IActionResult GetCarListByColorId(int colorId)
+        {
+            var result = _carService.GetCarListByColorId(colorId);
             if (result.Success)
             {
                 return Ok(result);

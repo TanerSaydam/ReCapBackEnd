@@ -12,8 +12,8 @@ using Entities.DTOs;
 namespace DataAccess.Concrete.EntiyFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
-    {
-        public IList<CarDetailDto> GetListCarDetail()
+    {        
+        private IList<CarDetailDto> CarDetailList()
         {
             using (var context = new RentACarContext())
             {
@@ -26,12 +26,31 @@ namespace DataAccess.Concrete.EntiyFramework
                              {
                                  CarId = x.Id,
                                  CarName = x.Description,
+                                 BrandId = x.BrandId,
                                  BrandName = y.Name,
+                                 ColorId = x.ColorId,
                                  ColorName = z.Name,
                                  DailyPrice = x.DailyPrice
                              };
                 return result.ToList();
             }
+        }
+        public IList<CarDetailDto> GetListCarDetail()
+        {
+            var result = CarDetailList();
+            return result.ToList();
+        }
+
+        public IList<CarDetailDto> GetListCarDetailByBrandId(int brandId)
+        {
+            var result = CarDetailList().Where(c=> c.BrandId == brandId);
+            return result.ToList();
+        }
+
+        public IList<CarDetailDto> GetListCarDetailByColorId(int colorId)
+        {
+            var result = CarDetailList().Where(c => c.ColorId == colorId);
+            return result.ToList();
         }
     }
 }
