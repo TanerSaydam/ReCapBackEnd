@@ -53,6 +53,17 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcarlistwithbrandidandcolorid")]
+        public IActionResult GetCarListwithBrandIdAndColorId(int brandId, int colorId)
+        {
+            var result = _carService.GetCarListWithBrandIdAndColorId(brandId,colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {

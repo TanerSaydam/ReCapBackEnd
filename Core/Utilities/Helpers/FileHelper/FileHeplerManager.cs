@@ -28,7 +28,7 @@ namespace Core.Utilities.Helpers.FileHelper
             return Upload(file, root);
         }
 
-       public string Upload(IFormFile file, string root)
+        public string Upload(IFormFile file, string root)
         {
             if (file.Length > 0)
             {
