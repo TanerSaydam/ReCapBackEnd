@@ -45,5 +45,6 @@ namespace Business.Constants
         public static string AccessTokenCreated = "Token created.";
         public static string CreditCartAdded = "Credit cart added.";
         public static string CarBusy = "Car busy on that date.";
+        public static string BrandNameExsist = "Brand name exsist.";
     }
 }
