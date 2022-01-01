@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.EntiyFramework
         private IList<CarDetailDto> CarDetailList()
         {
             using (var context = new RentACarContext())
-            {                
+            {
                 var result = from x in context.Cars
                              join y in context.Brands
                              on x.BrandId equals y.Id
@@ -30,6 +30,7 @@ namespace DataAccess.Concrete.EntiyFramework
                                  BrandName = y.Name,
                                  ColorId = x.ColorId,
                                  ColorName = z.Name,
+                                 ModelYear = x.ModelYear,
                                  DailyPrice = x.DailyPrice
                              };
                 return result.ToList();
