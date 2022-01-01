@@ -45,7 +45,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<FileHeplerManager>().As<IFileHelper>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
-            builder.RegisterType<JwTHelper>().As<ITokenHelper>().SingleInstance();            
+            builder.RegisterType<JwTHelper>().As<ITokenHelper>().SingleInstance();
+
+            builder.RegisterType<CreditCartManager>().As<ICreditCartService>().SingleInstance();
+            builder.RegisterType<EfCreditCartDal>().As<ICreditCartDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

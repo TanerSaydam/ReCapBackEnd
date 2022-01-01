@@ -8,40 +8,42 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string CarAdded = "Araba Eklendi.";
-        public static string CarUpdated = "Araba Güncellendi.";
-        public static string CarDeleted = "Araba Silindi.";
+        public static string CarAdded = "Car added.";
+        public static string CarUpdated = "Car updated.";
+        public static string CarDeleted = "Car deleted.";
 
-        public static string BrandAdded = "Marka Eklendi.";
-        public static string BrandUpdated = "Marka Güncellendi.";
-        public static string BrandDeleted = "Marka Silindi.";
+        public static string BrandAdded = "Brand added.";
+        public static string BrandUpdated = "Brand updated.";
+        public static string BrandDeleted = "Brand deleted.";
 
-        public static string ColorAdded = "Renk Eklendi.";
-        public static string ColorUpdated = "Renk Güncellendi.";
-        public static string ColorDeleted = "Renk Silindi.";
+        public static string ColorAdded = "Color added.";
+        public static string ColorUpdated = "Color updated.";
+        public static string ColorDeleted = "Color deleted.";
 
-        public static string CustomerAdded = "Müşteri Eklendi.";
-        public static string CustomerUpdated = "Müşteri Güncellendi.";
-        public static string CustomerDeleted = "Müşteri Silindi.";
+        public static string CustomerAdded = "Customer added.";
+        public static string CustomerUpdated = "Customer updated.";
+        public static string CustomerDeleted = "Customer deleted.";
 
-        public static string RentalAdded = "Araç Kiralama Oluşturuldu.";
-        public static string RentalUpdated = "Araç Kiralama Güncellendi.";
-        public static string RentalDeleted = "Araç Kiralama Silindi.";
+        public static string RentalAdded = "Rental successiful.";
+        public static string RentalUpdated = "Rental updated.";
+        public static string RentalDeleted = "Rental deleted.";
 
-        public static string CarImageAdded = "Araç Resmi Eklendi";
-        public static string CarImageUpdated = "Araç Resmi Güncellendi.";
-        public static string CarImageDeleted = "Araç Resmi Silindi.";
-        public static string CarImageExtended = "Araç Resmi Sayısı En Fazla 5 Olabilir.";
+        public static string CarImageAdded = "Car image added";
+        public static string CarImageUpdated = "Car image updated.";
+        public static string CarImageDeleted = "Car image deleted.";
+        public static string CarImageExtended = "The number of the car images can be maximum 5.";
 
-        public static string AuthorizationDenied = "İşlem yapmaya yetkiniz yok";
+        public static string AuthorizationDenied = "You are not authorized.";
 
-        public static string UserRegistered = "Kullanıcı kayıtı oluşturuldu";
-        public static string UserUpdated = "Kullanıcı güncellendi";
-        public static string UserDeleted = "Kullanıcı silindi";
-        public static string UserNotFound = "Kullanıcı bulunamadı";
-        public static string PasswordError = "Şifre hatalı";
-        public static string SuccessfulLogin = "Giriş başarılı";
-        public static string UserAlreadyExists = "Bu bilgilere ait bir kullanıcı var";
-        public static string AccessTokenCreated = "Token oluşturuldu";        
+        public static string UserRegistered = "User registered.";
+        public static string UserUpdated = "User updated.";
+        public static string UserDeleted = "User deleted.";
+        public static string UserNotFound = "User not found.";
+        public static string PasswordError = "Password wrong.";
+        public static string SuccessfulLogin = "Login successful.";
+        public static string UserAlreadyExists = "User already exists.";
+        public static string AccessTokenCreated = "Token created.";
+        public static string CreditCartAdded = "Credit cart added.";
+        public static string CarBusy = "Car busy on that date.";
     }
 }

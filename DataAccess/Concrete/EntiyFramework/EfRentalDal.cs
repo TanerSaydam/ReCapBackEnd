@@ -29,6 +29,7 @@ namespace DataAccess.Concrete.EntiyFramework
                                  BrandName = brand.Name,
                                  ColorId = car.ColorId,
                                  ColorName = color.Name,
+                                 CustomerId = customer.Id,
                                  Customer = customer.CompanyName,
                                  RentDate = rental.RentDate,
                                  ReturnDate = rental.ReturnDate
