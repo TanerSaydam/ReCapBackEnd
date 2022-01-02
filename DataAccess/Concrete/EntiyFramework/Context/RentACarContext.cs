@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntiyFramework.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-3BJ5GK9;Database=RentACar;Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Server=185.8.128.21;User Id=ecnorowc_sa;Password=s1244244@@;Database=ecnorowc_example;Integrated Security=false");
         }
 
         public DbSet<Car> Cars { get; set; }
