@@ -43,9 +43,11 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Login successful.";
         public static string UserAlreadyExists = "User already exists.";
         public static string AccessTokenCreated = "Token created.";
-        public static string CreditCartAdded = "Credit cart added.";
+        public static string CreditCartAdded = "Credit cart added. Payment successiful.";
         public static string CarBusy = "Car busy on that date.";
         public static string BrandNameExsist = "Brand name exsist.";
         public static string ColorNameExsist = "Color name exsist.";
+        public static string FindeksScoreisNotEnough = "Findeks score is not enough this car.";
+        public static string PaymentSuccessiful = "Payment successiful.";
     }
 }

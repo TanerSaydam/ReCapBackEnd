@@ -5,6 +5,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -18,18 +19,31 @@ namespace Business.Concrete
     {
         private IUserService _userService;
         private ITokenHelper _tokenHelper;
+        private ICustomerService _customerService;
+        private IFindeksService _findeksService;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, ICustomerService customerService, IFindeksService findeksService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _customerService = customerService;
+            _findeksService = findeksService;
         }
 
-        public IDataResult<AccessToken> CreateAccessToken(User user)
+        public IDataResult<UserLoginResultDto> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+            UserLoginResultDto result = new UserLoginResultDto();
+            result.accessToken = accessToken;
+            result.user = user;
+            return new SuccessDataResult<UserLoginResultDto>(result, Messages.AccessTokenCreated);
+        }
+
+        public IDataResult<User> GetById(int userId)
+        {
+            var result = _userService.GetById(userId);            
+            return new SuccessDataResult<User>(result);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -63,7 +77,25 @@ namespace Business.Concrete
             };
 
             _userService.Add(user);
+
+            string companyName = user.FirstName + " " + user.LastName;
+            Customer customer = new Customer { UserId = user.Id, CompanyName = companyName };
+            _customerService.Add(customer);
+
+            FindeksService findeks = new FindeksService()
+            {
+                CustomerId = customer.Id,
+                FindeksScore = 1800
+            };
+            _findeksService.Add(findeks);
+
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
+        }
+
+        public IResult Update(User user)
+        {
+            _userService.Update(user);
+            return new SuccessResult(Messages.UserUpdated);
         }
 
         public IResult UserExists(string email)

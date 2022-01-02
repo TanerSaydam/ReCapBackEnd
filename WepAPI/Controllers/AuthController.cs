@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Entities.Concrete;
+using Entities.Concrete;
 using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,12 @@ namespace WepAPI.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        IAuthService _autService;
+        IAuthService _autService;        
 
         public AuthController(IAuthService autService)
         {
             _autService = autService;
+            
         }
 
         [HttpPost("login")]
@@ -31,7 +34,29 @@ namespace WepAPI.Controllers
             var result = _autService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int userId)
+        {
+            var result = _autService.GetById(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(User user)
+        {
+            var result = _autService.Update(user);
+            if (result.Success)
+            {
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
@@ -48,8 +73,8 @@ namespace WepAPI.Controllers
             var registerResult = _autService.Register(userForRegisterDto, userForRegisterDto.Password);
             var result = _autService.CreateAccessToken(registerResult.Data);
             if (result.Success)
-            {
-                return Ok(result.Data);
+            {                
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }

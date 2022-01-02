@@ -31,7 +31,8 @@ namespace DataAccess.Concrete.EntiyFramework
                                  ColorId = x.ColorId,
                                  ColorName = z.Name,
                                  ModelYear = x.ModelYear,
-                                 DailyPrice = x.DailyPrice
+                                 DailyPrice = x.DailyPrice,
+                                 FindeksScore = x.FindeksScore
                              };
                 return result.ToList();
             }

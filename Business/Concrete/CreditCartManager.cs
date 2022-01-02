@@ -23,6 +23,12 @@ namespace Business.Concrete
 
         public IResult Add(CreditCart creditCart)
         {
+            var results = _creditCartDal.GetAll(c => c.CustomerId == creditCart.CustomerId);
+            foreach (var result in results)
+            {
+                _creditCartDal.Delete(result);
+            }
+
             _creditCartDal.Add(creditCart);
             return new SuccessResult(Messages.CreditCartAdded);
         }
@@ -30,6 +36,16 @@ namespace Business.Concrete
         public IDataResult<IList<CreditCart>> GetAll()
         {
             return new SuccessDataResult<IList<CreditCart>>(_creditCartDal.GetAll());
+        }
+
+        public IDataResult<CreditCart> GetByCustomerId(int customerId)
+        {
+            return new SuccessDataResult<CreditCart>(_creditCartDal.Get(c => c.CustomerId == customerId));
+        }
+
+        public IResult Payment()
+        {
+            return new SuccessResult(Messages.PaymentSuccessiful);
         }
     }
 }

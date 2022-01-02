@@ -26,5 +26,6 @@ namespace DataAccess.Concrete.EntiyFramework.Context
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
         public DbSet<CreditCart> CreditCarts { get; set; }
+        public DbSet<FindeksService> findeksServices { get; set; }
     }
 }

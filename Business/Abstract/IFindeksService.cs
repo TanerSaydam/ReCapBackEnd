@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICreditCartService
+    public interface IFindeksService
     {
-        IDataResult<IList<CreditCart>> GetAll();
-        IDataResult<CreditCart> GetByCustomerId(int customerId);
-        IResult Add(CreditCart creditCart);
-        IResult Payment();
+        IDataResult<FindeksService> GetFindeks(int customerId);
+        IResult Add(FindeksService findeksService);
     }
 }

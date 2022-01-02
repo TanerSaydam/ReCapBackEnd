@@ -50,6 +50,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CreditCartManager>().As<ICreditCartService>().SingleInstance();
             builder.RegisterType<EfCreditCartDal>().As<ICreditCartDal>().SingleInstance();
 
+            builder.RegisterType<FindeksServiceManager>().As<IFindeksService>().SingleInstance();
+            builder.RegisterType<EfFindeksServiceDal>().As<IFindeksServiceDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

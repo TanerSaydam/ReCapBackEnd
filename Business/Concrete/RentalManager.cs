@@ -17,15 +17,18 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-
-        public RentalManager(IRentalDal rentalDal)
+        IFindeksService _findeksService;
+        ICarService _carService;
+        public RentalManager(IRentalDal rentalDal, IFindeksService findeksService, ICarService carService)
         {
             _rentalDal = rentalDal;
+            _findeksService = findeksService;
+            _carService = carService;
         }
 
         public IResult Add(Rental rental)
         {
-            var result = BusinessRules.Run(IsCarReturned(rental.CarId, rental.RentDate));
+            var result = BusinessRules.Run(IsCarReturned(rental.CarId, rental.RentDate), IsEnoughFindexPoint(rental.CustomerId,rental.CarId));
             if (result != null)
             {
                 return result;
@@ -79,6 +82,17 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.CarBusy);
             }
             return new SuccessResult();
+        }
+
+        public IResult IsEnoughFindexPoint(int customerId,int carId)
+        {
+            var getFindexforCustomer = _findeksService.GetFindeks(customerId).Data;
+            var getFindexforCar = _carService.Get(carId).Data;            
+            if (getFindexforCustomer != null && getFindexforCustomer.FindeksScore >= getFindexforCar.FindeksScore)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult(Messages.FindeksScoreisNotEnough);
         }
     }
 }

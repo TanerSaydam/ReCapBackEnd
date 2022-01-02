@@ -31,10 +31,32 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("payment")]
+        public IActionResult Payment()
+        {
+            var result = _creditCartService.Payment();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _creditCartService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycustomerid")]
+        public IActionResult GetByCustomerId(int customerId)
+        {
+            var result = _creditCartService.GetByCustomerId(customerId);
             if (result.Success)
             {
                 return Ok(result);
