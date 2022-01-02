@@ -89,7 +89,7 @@ namespace WepAPI
 
             app.ConfigureCustomExceptionMiddleware();
 
-            app.UseCors(builder => builder.WithOrigins("https://localhost:4200").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("https://example.ecnorow.com").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
